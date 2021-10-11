@@ -35,8 +35,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 this@MainActivity.finish()
                 exitProcess(0)
             }
-
-
         }
     }
 }

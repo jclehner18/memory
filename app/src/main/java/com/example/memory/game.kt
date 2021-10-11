@@ -1,13 +1,20 @@
 package com.example.memory
 
+
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import java.util.*
 import kotlin.system.exitProcess
+import com.example.memory.R.drawable.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_game.*
 
+@SuppressLint("SetTextI18n")
 class game : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,37 +23,57 @@ class game : AppCompatActivity(), View.OnClickListener {
         val End=findViewById<Button>(R.id.end)
         End.setOnClickListener(this)
 
-        val buttons = arrayOf( //array of buttons for our 'cards'
-            findViewById<Button>(R.id.b1),
-            findViewById<Button>(R.id.b2),
-            findViewById<Button>(R.id.b3),
-            findViewById<Button>(R.id.b4),
-            findViewById<Button>(R.id.b5),
-            findViewById<Button>(R.id.b6),
-            findViewById<Button>(R.id.b7),
-            findViewById<Button>(R.id.b8),
-            findViewById<Button>(R.id.b9),
-            findViewById<Button>(R.id.b10),
-            findViewById<Button>(R.id.b11),
-            findViewById<Button>(R.id.b12),
-            findViewById<Button>(R.id.b13),
-            findViewById<Button>(R.id.b14),
-            findViewById<Button>(R.id.b15),
-            findViewById<Button>(R.id.b16)
-        )
-        for (button in buttons) //allows setOnClickListener for each button in the array
+        val images: MutableList<Int> = mutableListOf(sigma, dchi, ford, furth, kappa, sponsel, taylor, tke) //add tke image
+        val buttons = arrayOf(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16)
+
+        val card = trine //import trine logo
+        var clicked = 0
+        var flip = false
+        var checked = -1
+        images.shuffle()
+        for(i in 0..15)
         {
-            button.setOnClickListener(this)
+            buttons[i].setBackgroundResource(card)
+            buttons[i].text = " "
+            buttons[i].setOnClickListener{
+                if(buttons[i].text == " " && !flip)
+                {
+                    buttons[i].setBackgroundResource(images[i])
+                    buttons[i].setText(images[i])
+                    if(clicked == 0)
+                    {
+                        checked = i
+                    }
+                    clicked++
+                }
+                else if(buttons[i].text !in "card")
+                {
+                    buttons[i].setBackgroundResource(card)
+                    buttons[i].text=" "
+                    clicked--
+                }
+                if (clicked == 2)
+                {
+                    flip = true
+                    if(buttons[i].text == buttons[checked].text)
+                    {
+                        buttons[i].isClickable = false
+                        buttons[checked].isClickable = false
+                        flip = false
+                        clicked = 0
+                    }
+                }
+                else if (clicked ==0)
+                {
+                    flip = false
+                }
+            }
         }
-
-
-
     }
-
 
     override fun onClick(v:View)
     {
-        val tv=findViewById<TextView>(R.id.textView)
+
         when(v.id)
         {
             R.id.end ->
@@ -54,15 +81,6 @@ class game : AppCompatActivity(), View.OnClickListener {
                 this@game.finish()
                 exitProcess(0)
             }
-
-            R.id.b1 ->
-            {
-                //Collections.shuffle(buttons)
-            }
-
-
         }
     }
-
-
 }
