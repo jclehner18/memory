@@ -1,13 +1,8 @@
 package com.example.memory
-
-
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-
-
 import kotlin.system.exitProcess
 import com.example.memory.R.drawable.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_game.*
 
 
 class game : AppCompatActivity(), View.OnClickListener{
-    //@SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -23,6 +17,7 @@ class game : AppCompatActivity(), View.OnClickListener{
         val End=findViewById<Button>(R.id.end)
         End.setOnClickListener(this)
 
+        //try toggle buttons
         val images: MutableList<Int> = mutableListOf(sigma, dchi, ford, furth, kappa, sponsel, taylor, tke, sigma, dchi, ford, furth, kappa, sponsel, taylor, tke)
         val buttons = arrayOf(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16)
 
