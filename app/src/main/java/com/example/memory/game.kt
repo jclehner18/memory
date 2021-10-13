@@ -6,16 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import java.util.*
+
+
 import kotlin.system.exitProcess
 import com.example.memory.R.drawable.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_game.*
 
-@SuppressLint("SetTextI18n")
-class game : AppCompatActivity(), View.OnClickListener {
+
+class game : AppCompatActivity(), View.OnClickListener{
+    //@SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -23,10 +23,10 @@ class game : AppCompatActivity(), View.OnClickListener {
         val End=findViewById<Button>(R.id.end)
         End.setOnClickListener(this)
 
-        val images: MutableList<Int> = mutableListOf(sigma, dchi, ford, furth, kappa, sponsel, taylor, tke) //add tke image
+        val images: MutableList<Int> = mutableListOf(sigma, dchi, ford, furth, kappa, sponsel, taylor, tke, sigma, dchi, ford, furth, kappa, sponsel, taylor, tke)
         val buttons = arrayOf(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16)
 
-        val card = trine //import trine logo
+        val card = trine
         var clicked = 0
         var flip = false
         var checked = -1
@@ -34,9 +34,9 @@ class game : AppCompatActivity(), View.OnClickListener {
         for(i in 0..15)
         {
             buttons[i].setBackgroundResource(card)
-            buttons[i].text = " "
+            buttons[i].text = "card"
             buttons[i].setOnClickListener{
-                if(buttons[i].text == " " && !flip)
+                if(buttons[i].text == "card" && !flip)
                 {
                     buttons[i].setBackgroundResource(images[i])
                     buttons[i].setText(images[i])
@@ -49,7 +49,7 @@ class game : AppCompatActivity(), View.OnClickListener {
                 else if(buttons[i].text !in "card")
                 {
                     buttons[i].setBackgroundResource(card)
-                    buttons[i].text=" "
+                    buttons[i].text="card"
                     clicked--
                 }
                 if (clicked == 2)
@@ -71,7 +71,7 @@ class game : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    override fun onClick(v:View)
+    override fun onClick(v: View)
     {
 
         when(v.id)
