@@ -55,4 +55,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/memory_foreground" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
