@@ -3,6 +3,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import kotlin.system.exitProcess
 import com.example.memory.R.drawable.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,6 +18,7 @@ class game : AppCompatActivity(), View.OnClickListener{
         val End=findViewById<Button>(R.id.end)
         End.setOnClickListener(this)
 
+        //findviewbyid for toggle buttons
         //try toggle buttons
         val images: MutableList<Int> = mutableListOf(sigma, dchi, ford, furth, kappa, sponsel, taylor, tke, sigma, dchi, ford, furth, kappa, sponsel, taylor, tke)
         val buttons = arrayOf(b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16)
@@ -33,6 +35,7 @@ class game : AppCompatActivity(), View.OnClickListener{
             buttons[i].setOnClickListener{
                 if(buttons[i].text == "card" && !flip)
                 {
+                    //set image resouce and change buttons to images
                     buttons[i].setBackgroundResource(images[i])
                     buttons[i].setText(images[i])
                     if(clicked == 0)
