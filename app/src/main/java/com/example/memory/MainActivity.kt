@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val Exit=findViewById<Button>(R.id.Exit)
         Exit.setOnClickListener(this)
 
-        val Play= findViewById<Button>(R.id.Play)
+        val Play= findViewById<Button>(R.id.Play) //play button takes you to new activity screen
         Play.setOnClickListener{val intent = Intent(this, game::class.java)
         startActivity(intent)}
 
@@ -29,14 +29,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val tv=findViewById<TextView>(R.id.textView)
         when(v.id)
         {
-            R.id.Exit ->
+            R.id.Exit -> //exit button exits game
             {
                 this@MainActivity.finish()
                 exitProcess(0)
-            }
-            R.id.Play ->
-            {
-
             }
         }
     }
